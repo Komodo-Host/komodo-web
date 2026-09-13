@@ -25,6 +25,9 @@ When you make changes to the code and push them to this repository, use the foll
     # 2. Pull the latest changes from GitHub
     git pull origin main
 
+    git fetch origin
+    git reset --hard origin/main
+
     # 3. Install or update dependencies (inside the backend folder)
     npm install
 
