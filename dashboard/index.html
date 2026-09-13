@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#f3f2ed" />
+
+    <title>Dashboard | Komodo Hosting</title>
+
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">
+          <img src="../images/favicon.png" alt="Komodo Host" />
+        </span>
+
+        <span class="brand-name">
+          <strong> KOMODO HOST </strong>
+
+          <span> DASHBOARD </span>
+        </span>
+      </a>
+
+      <div class="account-container">
+        <button type="button" id="accountButton" class="account-button" aria-label="Abrir menú de cuenta" aria-expanded="false">
+          <span id="accountInitial"> ? </span>
+        </button>
+
+        <div id="accountMenu" class="account-menu">
+          <div class="account-info">
+            <span class="account-info-label"> CUENTA </span>
+
+            <span id="accountName" class="account-info-name"> Usuario </span>
+          </div>
+
+          <button type="button" id="accountLinkButton" class="settings-button">Cuenta</button>
+
+          <button type="button" id="settingsButton" class="settings-button">Ajustes</button>
+
+          <button type="button" id="logoutButton" class="logout-button">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <div class="dashboard-content">
+        <section class="welcome">
+          <span class="welcome-label"> KOMODO HOSTING </span>
+
+          <h1>
+            Bienvenido,
+            <span id="welcomeName"> usuario </span>.
+          </h1>
+
+          <p>Este es tu panel de control. Acá podrás gestionar tus proyectos y servicios.</p>
+        </section>
+
+        <section class="service-panels">
+          <article class="service-panel">
+            <div class="service-panel-main">
+              <div class="service-panel-icon">
+                <img src="../images/service-preview.png" alt="Komodo Host" />
+              </div>
+
+              <div class="service-panel-info">
+                <span class="service-panel-brand"> Komodo Host </span>
+
+                <h2>Tus Servidores:</h2>
+              </div>
+            </div>
+
+            <div class="service-panel-body">
+              <span class="service-panel-empty"> Vacío </span>
+
+              <button type="button" class="service-panel-button">Crear Servidor</button>
+            </div>
+          </article>
+
+          <article class="service-panel">
+            <div class="service-panel-main">
+              <div class="service-panel-icon">
+                <img src="../images/service-preview.png" alt="Komodo Host" />
+              </div>
+
+              <div class="service-panel-info">
+                <span class="service-panel-brand"> Komodo Host </span>
+
+                <h2>Tus Bots:</h2>
+              </div>
+            </div>
+
+            <div class="service-panel-body">
+              <span class="service-panel-empty"> Vacío </span>
+
+              <button type="button" class="service-panel-button">Crear Bot</button>
+            </div>
+          </article>
+
+          <article class="service-panel service-panel-phone">
+            <div class="service-panel-main">
+              <div class="service-panel-icon">
+                <img src="../images/phone-preview.png" alt="Komodo Phone" />
+              </div>
+
+              <div class="service-panel-info">
+                <span class="service-panel-brand"> Komodo Phone </span>
+
+                <h2>Tus Números:</h2>
+              </div>
+            </div>
+
+            <div class="service-panel-body">
+              <span class="service-panel-empty"> Vacío </span>
+
+              <button type="button" class="service-panel-button">Obtener Número</button>
+            </div>
+          </article>
+        </section>
+
+        <div class="coming-soon">
+          <div class="coming-soon-text">
+            <strong> Panel de Komodo Hosting </strong>
+
+            <span> El ecosistema de hosting se añadirá progresivamente. </span>
+          </div>
+
+          <span class="status"> EN DESARROLLO </span>
+        </div>
+      </div>
+    </main>
+
+    <script src="/dashboard/index.js"></script>
+  </body>
+</html>
