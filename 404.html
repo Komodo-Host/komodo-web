@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e2a44" />
+    <meta name="robots" content="noindex" />
+    <title>Error 404 | Komodo</title>
+    <link rel="icon" href="/images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-height: 100%;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px 20px;
+        color: #ffffff;
+        position: relative;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 15% 25%, rgba(72, 111, 216, 0.16), transparent 32%),
+          radial-gradient(circle at 85% 75%, rgba(30, 42, 68, 0.22), transparent 30%),
+          linear-gradient(145deg, #1e2a44 0%, #182238 48%, #1e324c 100%);
+        background-attachment: fixed;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        top: -180px;
+        left: 8%;
+        width: 500px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(72, 111, 216, 0.14), transparent 70%);
+        filter: blur(35px);
+        pointer-events: none;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        right: -120px;
+        bottom: -180px;
+        width: 500px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(87, 135, 190, 0.12), transparent 70%);
+        filter: blur(40px);
+        pointer-events: none;
+      }
+      .error-card {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 560px;
+        text-align: center;
+        padding: 48px 36px 44px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(6px);
+      }
+      .error-logo-link {
+        display: inline-block;
+        margin-bottom: 28px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+      .error-logo-link:hover {
+        transform: translateY(-2px);
+        opacity: 0.85;
+      }
+      .error-logo {
+        height: 72px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+        filter: brightness(0) invert(1);
+      }
+      .error-code {
+        font-size: clamp(3.4rem, 12vw, 5.2rem);
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 14px;
+        background: linear-gradient(135deg, #ffffff 30%, #8fb0f0 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+      .error-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        letter-spacing: -0.3px;
+      }
+      .error-subtitle {
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #b4c0d0;
+        margin-bottom: 36px;
+      }
+      .error-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .error-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px 20px;
+        font-family: inherit;
+        font-size: 0.98rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .error-btn:hover {
+        transform: translateY(-2px);
+      }
+      .error-btn:focus-visible {
+        outline: 2px solid #8fb0f0;
+        outline-offset: 3px;
+      }
+      .error-btn.primary {
+        background: #ffffff;
+        color: #1e2a44;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+      }
+      .error-btn.primary:hover {
+        background: #e8eefc;
+      }
+      .error-btn.secondary {
+        background: rgba(72, 111, 216, 0.22);
+        color: #ffffff;
+        border-color: rgba(143, 176, 240, 0.35);
+      }
+      .error-btn.secondary:hover {
+        background: rgba(72, 111, 216, 0.36);
+        border-color: rgba(143, 176, 240, 0.6);
+      }
+      .error-btn.ghost {
+        background: transparent;
+        color: #b4c0d0;
+        border-color: rgba(255, 255, 255, 0.16);
+      }
+      .error-btn.ghost:hover {
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.35);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .error-footer {
+        margin-top: 28px;
+        font-size: 0.8rem;
+        color: #7f8da3;
+      }
+      @media (max-width: 600px) {
+        .error-card {
+          padding: 36px 22px 32px;
+          border-radius: 20px;
+        }
+        .error-logo {
+          height: 58px;
+        }
+        .error-title {
+          font-size: 1.3rem;
+        }
+        .error-subtitle {
+          font-size: 0.98rem;
+          margin-bottom: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="error-card">
+      <a href="https://komodo-host.site" class="error-logo-link" aria-label="Ir a Komodo-Host.site">
+        <img src="/images/logo.png" alt="Komodo Host" class="error-logo" />
+      </a>
+
+      <div class="error-code">Sss...🦎</div>
+      <h1 class="error-title">Error 404</h1>
+      <p class="error-subtitle">No pudimos encontrar esta página.</p>
+
+      <div class="error-actions">
+        <a href="https://komodo-host.site" class="error-btn primary">Ir a Komodo-host.site</a>
+        <a href="mailto:contacto@komodo-host.site" class="error-btn secondary">Contactar con Soporte</a>
+        <button type="button" class="error-btn ghost" id="backButton">Volver atrás</button>
+      </div>
+
+      <p class="error-footer">© 2026 Komodo Host · Managua, Nicaragua.</p>
+    </main>
+
+    <script>
+      document.getElementById("backButton").addEventListener("click", function () {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "https://komodo-host.site";
+        }
+      });
+    </script>
+  </body>
+</html>

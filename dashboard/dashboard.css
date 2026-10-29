@@ -1,0 +1,739 @@
+:root {
+  --primary: #1e2a44;
+  --secondary: #30456e;
+  --background: #f3f2ed;
+  --white: #ffffff;
+  --text: #1e2a44;
+  --muted: #747b86;
+  --border: #d9dce2;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(48, 69, 110, 0.06), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(30, 42, 68, 0.045), transparent 32%), var(--background);
+  color: var(--text);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button {
+  font: inherit;
+  border: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  border-bottom: 1px solid rgba(30, 42, 68, 0.08);
+  background: rgba(240, 246, 255, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(30, 42, 68, 0.13);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 14px rgba(30, 42, 68, 0.07);
+}
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.brand-name {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.brand-name strong {
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.brand-name span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.account-container {
+  position: relative;
+}
+.account-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mailbox-button {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+.mailbox-button:hover {
+  color: var(--secondary);
+  transform: translateY(-1px);
+}
+.account-button {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(30, 42, 68, 0.14);
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 7px 18px rgba(30, 42, 68, 0.16);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.account-button:hover {
+  transform: translateY(-1px);
+  background: var(--secondary);
+  box-shadow: 0 9px 22px rgba(30, 42, 68, 0.2);
+}
+.account-menu {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 210px;
+  padding: 8px;
+  border: 1px solid rgba(30, 42, 68, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow:
+    0 18px 45px rgba(30, 42, 68, 0.14),
+    0 4px 12px rgba(30, 42, 68, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-7px) scale(0.98);
+  transform-origin: top right;
+  transition:
+    opacity 0.18s ease,
+    visibility 0.18s ease,
+    transform 0.18s ease;
+}
+.account-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+.account-info {
+  padding: 10px 10px 9px;
+  border-bottom: 1px solid #ececec;
+}
+.account-info-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #999fa7;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+.account-info-name {
+  display: block;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 750;
+}
+.settings-button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 9px;
+  background: transparent;
+  color: #5e646d;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.settings-button:hover {
+  background: #f2f3f4;
+  color: var(--primary);
+}
+.logout-button {
+  width: 100%;
+  margin-top: 2px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 9px;
+  background: transparent;
+  color: #5e646d;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+.logout-button:hover {
+  background: #f2f3f4;
+  color: var(--primary);
+}
+.dashboard {
+  width: 100%;
+  min-height: 100vh;
+  padding: 104px 30px 30px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.dashboard-content {
+  width: 100%;
+  max-width: 1100px;
+}
+.welcome {
+  margin-bottom: 28px;
+}
+.welcome-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--secondary);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+.welcome h1 {
+  color: var(--primary);
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+  font-weight: 780;
+  letter-spacing: -0.045em;
+}
+.welcome p {
+  margin-top: 9px;
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.welcome .welcome-label {
+  font-size: 12px;
+}
+.service-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.service-panel {
+  padding: 14px 22px;
+  border: 1px solid rgba(30, 42, 68, 0.09);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 30px rgba(30, 42, 68, 0.055);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.service-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 17px 35px rgba(30, 42, 68, 0.08);
+}
+.service-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.service-panel-main {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.service-panel-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(30, 42, 68, 0.1);
+  background: rgba(30, 42, 68, 0.03);
+  overflow: hidden;
+}
+.service-panel-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-panel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.service-panel-brand {
+  color: var(--secondary);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+.service-panel-info h2 {
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+.service-panel-plans-button {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.service-panel-plans-button:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+.service-panel-phone .service-panel-plans-button {
+  border-color: #cb3429;
+  color: #cb3429;
+}
+.service-panel-phone .service-panel-plans-button:hover {
+  background: #cb3429;
+  color: #ffffff;
+}
+.service-panel-ai .service-panel-brand,
+.service-panel-ai .service-panel-info h2 {
+  color: #234b33;
+}
+.service-panel-ai .service-panel-button {
+  background: #234b33;
+}
+.service-panel-ai .service-panel-button:hover {
+  background: #173423;
+}
+.service-panel-ai .service-panel-plans-button {
+  border-color: #234b33;
+  color: #234b33;
+}
+.service-panel-ai .service-panel-plans-button:hover {
+  background: #234b33;
+  color: #ffffff;
+}
+.service-panel-body {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(30, 42, 68, 0.07);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.service-panel-empty {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.service-panel-button {
+  min-width: 152px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+.service-panel-button:hover {
+  background: var(--secondary);
+  transform: translateY(-1px);
+}
+.service-panel-phone {
+  background: #f8f5f4;
+}
+.service-panel-phone .service-panel-brand,
+.service-panel-phone .service-panel-info h2 {
+  color: #cb3429;
+}
+.service-panel-phone .service-panel-button {
+  background: #cb3429;
+}
+.service-panel-phone .service-panel-button:hover {
+  background: #a82a21;
+}
+.coming-soon {
+  margin-top: 16px;
+  padding: 18px 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(30, 42, 68, 0.08);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.coming-soon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.coming-soon-text strong {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 750;
+}
+.coming-soon-text span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.status {
+  padding: 6px 9px;
+  border-radius: 7px;
+  background: rgba(48, 69, 110, 0.07);
+  color: var(--secondary);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 800px) {
+  .dashboard {
+    padding: 106px 20px 25px;
+    align-items: flex-start;
+  }
+  .service-panel-icon {
+    width: 46px;
+    height: 46px;
+  }
+}
+@media (max-width: 500px) {
+  .topbar {
+    padding: 12px 14px;
+  }
+  .brand-logo {
+    width: 35px;
+    height: 35px;
+  }
+  .brand-name strong {
+    font-size: 14px;
+  }
+  .brand-name span {
+    font-size: 9.5px;
+  }
+  .account-button {
+    width: 39px;
+    height: 39px;
+  }
+  .dashboard {
+    padding: 104px 15px 20px;
+  }
+  .welcome h1 {
+    font-size: 31px;
+  }
+  .service-panel-header {
+    flex-wrap: wrap;
+  }
+  .service-panel-main {
+    gap: 10px;
+  }
+  .service-panel-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .service-panel-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .service-panel-button {
+    width: 100%;
+  }
+  .coming-soon {
+    align-items: flex-start;
+    gap: 12px;
+    flex-direction: column;
+  }
+}
+@media (min-width: 801px) {
+  .service-panel-brand {
+    font-size: 9px;
+  }
+  .service-panel-info h2 {
+    font-size: 18px;
+  }
+}
+
+/* ==================================================
+   NUEVO: ESTILOS EXCLUSIVOS PARA LAS TARJETAS DE SERVIDORES
+   ================================================== */
+
+/* Hacemos que SOLO el body de "Tus Servidores" se comporte como columna */
+#servers-panel {
+  padding-top: 18px;
+  padding-bottom: 20px;
+}
+
+#servers-panel .service-panel-body {
+  flex-direction: column;
+  align-items: flex-end; /* Esto evita que el botón se estire, lo alinea a la derecha */
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+/* Contenedor de las 3 tarjetas en fila */
+.servers-list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  min-height: 92px;
+}
+
+/* Mensajes de Vacío / Cargando / Error ocupan todo el ancho del panel */
+.servers-list-grid > .service-panel-empty {
+  grid-column: 1 / -1;
+  align-self: center;
+}
+
+/* Tarjeta individual */
+.server-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  min-height: 92px;
+  border: 1.5px solid var(--primary);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(30, 42, 68, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+}
+
+.server-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.5px var(--primary), 0 4px 12px rgba(30, 42, 68, 0.04);
+  transform: translateY(-2px);
+}
+
+.server-card-left {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Tipo de servicio (NodeJS, etc.) debajo de la imagen */
+.server-card-language {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Recuadro de la imagen del lenguaje */
+.server-card-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid rgba(30, 42, 68, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.server-card-image img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.server-card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-self: flex-start;
+  overflow: hidden;
+}
+
+.server-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Nombre del servidor en azul característico */
+.server-card-title {
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Etiqueta de estado (Online, Offline, etc.) */
+.server-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Colores de estado */
+.status-online {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+.status-online .badge-dot {
+  background: #10b981;
+  box-shadow: 0 0 4px #10b981;
+}
+
+.status-offline {
+  background: rgba(156, 163, 175, 0.15);
+  color: #4b5563;
+}
+.status-offline .badge-dot {
+  background: #9ca3af;
+}
+
+.status-installing {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+.status-installing .badge-dot {
+  background: #f59e0b;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* Textos de info debajo del título */
+.server-card-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* Responsividad de las tarjetas (para que en móviles no se rompa) */
+@media (max-width: 900px) {
+  .servers-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .servers-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Barrita fina separadora de la información del servidor */
+.server-info-sep {
+  width: 1px;
+  height: 10px;
+  background: var(--primary);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
