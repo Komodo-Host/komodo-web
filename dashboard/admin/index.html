@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin IA | Komodo Host</title>
+    <link rel="icon" href="/images/favicon.png" />
+    <link rel="stylesheet" href="/dashboard/dashboard.css" />
+    <link rel="stylesheet" href="/dashboard/admin/admin.css" />
+  </head>
+
+  <body>
+    <!-- Pantalla de Login del Admin -->
+    <div id="loginScreen" class="admin-login-screen">
+      <div class="login-card">
+        <h2>Panel de Administrador</h2>
+        <p>Ingresa la contraseña maestra para gestionar las API Keys de IA.</p>
+        <input type="password" id="adminPasswordInput" placeholder="Contraseña de administrador" />
+        <button id="loginBtn" class="admin-btn">Acceder</button>
+        <span id="loginError" class="error-text" style="display: none;">Contraseña incorrecta.</span>
+      </div>
+    </div>
+
+    <!-- Pantalla del Panel de Admin (Oculta al inicio) -->
+    <div id="adminPanel" style="display: none;">
+      <header class="topbar">
+        <a href="/dashboard" class="brand brand-logo-only"><img src="/images/logo.png" alt="Komodo Host" /></a>
+        <button id="logoutAdminBtn" class="logout-admin-btn">Cerrar Sesión Admin</button>
+      </header>
+
+      <main class="dashboard">
+        <div class="dashboard-content">
+          <section class="welcome">
+            <span class="welcome-label"> PANEL DE ADMINISTRACIÓN </span>
+            <h1>Gestión de API Keys de IA</h1>
+            <p>Administra los servidores de respaldo y revisa los límites en tiempo real.</p>
+          </section>
+
+          <!-- SECCIÓN DE ESTADO GLOBAL -->
+          <section class="admin-global-status" id="globalStatusSection">
+            <div class="global-status-info">
+              <span class="global-status-label">Estado del Servicio:</span>
+              <span id="globalStatusText" class="global-status-value">Cargando...</span>
+            </div>
+            <div class="global-status-info">
+              <span class="global-status-label">Servidor Activo:</span>
+              <span id="globalServerText" class="global-status-value">Cargando...</span>
+            </div>
+          </section>
+
+          <div class="admin-grid">
+            <!-- Tarjeta Servidor 1 -->
+            <article class="admin-card" id="card-opcion_1">
+              <div class="admin-card-header">
+                <h2>Servidor 1 (Principal)</h2>
+                <span class="status-badge" id="status-1">Cargando...</span>
+              </div>
+              <div class="admin-card-body">
+                <div class="limit-item">
+                  <span class="limit-label">Peticiones Restantes (RPD):</span>
+                  <span class="limit-value" id="rpd-1">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Tokens Restantes (TPM):</span>
+                  <span class="limit-value" id="tpm-1">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Última actualización:</span>
+                  <span class="limit-value" id="update-1">-</span>
+                </div>
+                <input type="text" class="key-input" id="key-input-1" placeholder="Pegar API Key del Servidor 1" />
+              </div>
+            </article>
+
+            <!-- Tarjeta Servidor 2 -->
+            <article class="admin-card" id="card-opcion_2">
+              <div class="admin-card-header">
+                <h2>Servidor 2 (Respaldo)</h2>
+                <span class="status-badge" id="status-2">Cargando...</span>
+              </div>
+              <div class="admin-card-body">
+                <div class="limit-item">
+                  <span class="limit-label">Peticiones Restantes (RPD):</span>
+                  <span class="limit-value" id="rpd-2">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Tokens Restantes (TPM):</span>
+                  <span class="limit-value" id="tpm-2">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Última actualización:</span>
+                  <span class="limit-value" id="update-2">-</span>
+                </div>
+                <input type="text" class="key-input" id="key-input-2" placeholder="Pegar API Key del Servidor 2" />
+              </div>
+            </article>
+
+            <!-- Tarjeta Servidor 3 -->
+            <article class="admin-card" id="card-opcion_3">
+              <div class="admin-card-header">
+                <h2>Servidor 3 (Enterprise)</h2>
+                <span class="status-badge" id="status-3">Cargando...</span>
+              </div>
+              <div class="admin-card-body">
+                <div class="limit-item">
+                  <span class="limit-label">Peticiones Restantes (RPD):</span>
+                  <span class="limit-value" id="rpd-3">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Tokens Restantes (TPM):</span>
+                  <span class="limit-value" id="tpm-3">-</span>
+                </div>
+                <div class="limit-item">
+                  <span class="limit-label">Última actualización:</span>
+                  <span class="limit-value" id="update-3">-</span>
+                </div>
+                <input type="text" class="key-input" id="key-input-3" placeholder="Pegar API Key del Servidor 3" />
+              </div>
+            </article>
+          </div>
+
+          <div class="save-actions">
+            <button id="saveKeysBtn" class="admin-btn save-btn">Guardar Nuevas Keys</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="/dashboard/admin/admin.js"></script>
+  </body>
+</html>
