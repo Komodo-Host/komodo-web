@@ -1,0 +1,521 @@
+/* ==================================================
+   ESTILOS DEL PANEL DE SERVIDOR
+   (el fondo, topbar y menú de cuenta vienen de dashboard.css)
+   ================================================== */
+
+.panel-shell {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 72px; /* alto del topbar fijo */
+}
+
+/* Margen lateral (un poco menor que el del dashboard) */
+.panel-gutter {
+  width: 100%;
+  padding: 0 18px;
+}
+.panel-inner {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ---------- Índice de ubicación ---------- */
+.panel-crumbs-row {
+  padding-top: 18px;
+  padding-bottom: 8px;
+}
+.panel-crumbs {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 28px;
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.panel-crumbs-logo {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.panel-crumbs-brand {
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.panel-crumbs-sep {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1;
+}
+.panel-crumbs-server {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Índice de secciones ---------- */
+.panel-tabs-row {
+  border-top: 1px solid #d3d5da;
+  border-bottom: 1px solid #d3d5da;
+}
+.panel-tabs-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 26px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.panel-tabs::-webkit-scrollbar {
+  display: none;
+}
+.panel-tab {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 13px 2px 10px;
+  border-bottom: 3px solid transparent;
+  color: var(--primary);
+  font-size: 15px;
+  font-weight: 700;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+.panel-tab:hover {
+  border-bottom-color: #dcdee2;
+}
+.panel-tab.active {
+  color: var(--secondary);
+  border-bottom-color: #a9adb4;
+}
+
+/* ---------- Botones de acción ---------- */
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 6px 0;
+}
+.panel-action {
+  min-width: 92px;
+  padding: 8px 18px;
+  border: 1.5px solid var(--primary);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.panel-action:hover {
+  transform: translateY(-1px);
+}
+.panel-action-start {
+  background: var(--primary);
+  color: var(--white);
+}
+.panel-action-start:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+.panel-action-restart {
+  background: transparent;
+  color: var(--primary);
+}
+.panel-action-restart:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+.panel-action-stop {
+  border-color: #cb3429;
+  background: #cb3429;
+  color: var(--white);
+}
+.panel-action-stop:hover {
+  background: #a82920;
+  border-color: #a82920;
+}
+
+/* ---------- Contenido ---------- */
+.panel-content {
+  padding: 24px 0 30px;
+  min-height: 300px;
+}
+.panel-error {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(203, 52, 41, 0.08);
+  color: #cb3429;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .panel-gutter {
+    padding: 0 14px;
+  }
+  .panel-tabs-inner {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .panel-tabs {
+    width: 100%;
+  }
+  .panel-actions {
+    width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid #e3e5e9;
+  }
+  .panel-action {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+  }
+}
+@media (max-width: 500px) {
+  .panel-gutter {
+    padding: 0 12px;
+  }
+  .panel-crumbs {
+    font-size: 14px;
+  }
+  .panel-tabs {
+    gap: 18px;
+  }
+}
+
+/* ---------- Encabezado: etiqueta "Panel" junto al logo ---------- */
+.brand-panel-label {
+  margin-left: 4px;
+  padding-left: 14px;
+  border-left: 1px solid #d3d5da;
+  color: var(--primary);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+/* ---------- Nombre del servidor (a la derecha, encima de Iniciar / Reiniciar / Detener) ---------- */
+.panel-server-title {
+  color: var(--primary);
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.15;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+  flex-shrink: 0;
+  max-width: 55%;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.panel-crumbs-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-crumbs-inner .panel-crumbs {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* ==================================================
+   OVERVIEW
+   ================================================== */
+.ov {
+  padding-top: 14px;
+}
+.ov-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+}
+.ov-title {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+}
+.ov-title-sm {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+}
+.ov-title-gap {
+  margin-top: 30px;
+}
+.ov-label {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 780;
+  letter-spacing: -0.02em;
+}
+.ov-row {
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+.ov-row .ov-label {
+  padding-top: 1px;
+}
+.ov-row-edit {
+  min-height: 30px;
+  align-items: center;
+}
+.ov-row-edit .ov-label,
+.ov-row-top .ov-label {
+  padding-top: 0;
+}
+.ov-row-top .ov-label {
+  line-height: 30px;
+}
+
+/* Cajas editables */
+.ov-name-box {
+  padding: 4px 10px 4px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-self: start;
+  max-width: 100%;
+  min-height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #d3d5da;
+  border-radius: 9px;
+  background: transparent;
+}
+.ov-box-top {
+  align-items: flex-start;
+}
+.ov-name-text {
+  min-width: 0;
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ov-name-text.ov-wrap {
+  padding-top: 1px;
+  line-height: 1.45;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.ov-name-text.ov-empty {
+  min-width: 150px;
+  height: 20px;
+}
+.ov-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  color: #9aa0a8;
+  cursor: pointer;
+}
+.ov-box-top .ov-edit-btn {
+  padding-top: 3px;
+}
+.ov-select {
+  justify-self: start;
+  max-width: 100%;
+  min-height: 30px;
+  padding: 4px 30px 4px 12px;
+  border: 1px solid #d3d5da;
+  border-radius: 9px;
+  background: transparent url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa0a8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 10px center;
+  color: var(--text);
+  font: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.ov-select:focus {
+  outline: none;
+  border-color: #b5b9c0;
+}
+
+/* Valores */
+.ov-divider {
+  margin: 8px 0 24px;
+  height: 1px;
+  background: #d3d5da;
+}
+.ov-value {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.ov-value-stack {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.ov-line {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.ov-check {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(48, 69, 110, 0.09);
+  color: var(--secondary);
+  font-size: 10px;
+  font-weight: 800;
+}
+.ov-icon-img {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.ov-flag {
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.ov-value-url {
+  gap: 9px;
+}
+.ov-url-text {
+  min-width: 0;
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ov-id-text {
+  max-width: 130px;
+}
+.ov-copy-btn {
+  margin-left: -4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #9aa0a8;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.ov-copy-btn:hover {
+  background: rgba(154, 160, 168, 0.16);
+}
+.ov-copy-btn .ov-done-icon {
+  display: none;
+}
+.ov-copy-btn.copied .ov-copy-icon {
+  display: none;
+}
+.ov-copy-btn.copied .ov-done-icon {
+  display: block;
+}
+
+/* Derecha */
+.ov-actions {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ov-btn {
+  padding: 8px 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1.5px solid var(--primary);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+.ov-btn:hover {
+  transform: translateY(-1px);
+}
+.ov-btn img {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+}
+.ov-btn-solid {
+  background: var(--primary);
+  color: var(--white);
+}
+.ov-btn-solid:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+}
+.ov-btn-outline {
+  background: transparent;
+  color: var(--primary);
+}
+.ov-btn-outline:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .ov-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+}
+@media (max-width: 500px) {
+  .panel-server-title {
+    font-size: 20px;
+  }
+  .brand-panel-label {
+    padding-left: 10px;
+    font-size: 15px;
+  }
+  .ov-row {
+    grid-template-columns: 110px minmax(0, 1fr);
+  }
+}
